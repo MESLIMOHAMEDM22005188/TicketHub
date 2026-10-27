@@ -12,168 +12,66 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="app-shell">
-    <aside class="sidebar" id="sidebar">
-      <a href="#" class="brand" aria-label="TicketHub home">
-        <span class="brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 6.5h15v3a2.5 2.5 0 0 0 0 5v3h-15v-3a2.5 2.5 0 0 0 0-5z"/><path d="M12 7.5v2m0 2v2m0 2v1"/></svg></span>
-        <span>ticket<span class="brand-light">hub</span><sup>®</sup></span>
-      </a>
-      <div class="workspace-switch">
-        <span class="workspace-avatar">N</span>
-        <span class="workspace-meta"><strong>Northstar Studio</strong><small>Support workspace</small></span>
-        <svg class="chevron" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></svg>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <a href="#" class="brand" aria-label="TicketHub home"><span class="brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 6.5h15v3a2.5 2.5 0 0 0 0 5v3h-15v-3a2.5 2.5 0 0 0 0-5z"/><path d="M12 7.5v2m0 2v2m0 2v1"/></svg></span><span>ticket<span class="brand-light">hub</span><sup>®</sup></span></a>
+    <div class="workspace-switch"><span class="workspace-avatar">N</span><span class="workspace-meta"><strong>Northstar Studio</strong><small>Support workspace</small></span><svg class="chevron" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></svg></div>
+    <div class="nav-label">WORKSPACE</div>
+    <nav class="nav-list" aria-label="Main navigation">
+      <button class="nav-item active" data-view="overview"><span class="nav-icon">⌂</span> Overview</button>
+      <button class="nav-item" data-view="tickets"><span class="nav-icon">▤</span> All tickets <span class="nav-count" id="nav-open-count">8</span></button>
+      <button class="nav-item" data-view="my-tickets"><span class="nav-icon">♙</span> Assigned to me</button>
+      <button class="nav-item" data-view="activity"><span class="nav-icon">◷</span> Activity</button>
+    </nav>
+    <div class="nav-label nav-label-spaced">VIEWS <button class="tiny-plus" id="add-view" aria-label="Add view">+</button></div>
+    <nav class="nav-list" aria-label="Saved views">
+      <button class="nav-item" data-filter="Open"><span class="dot dot-blue"></span> Open <span class="nav-count" id="saved-open-count">8</span></button>
+      <button class="nav-item" data-filter="In progress"><span class="dot dot-purple"></span> In progress <span class="nav-count" id="saved-progress-count">3</span></button>
+      <button class="nav-item" data-filter="Resolved"><span class="dot dot-green"></span> Resolved</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="help-card"><div class="help-icon">✦</div><strong>Need a hand?</strong><p>Find your way around TicketHub.</p><button id="help-button">Visit help center <span>↗</span></button></div>
+      <button class="profile-button" id="profile-button"><span class="avatar avatar-self">JM</span><span class="profile-copy"><strong>Jordan Miller</strong><small>Support admin</small></span><span class="profile-more">•••</span></button>
+    </div>
+  </aside>
+  <main class="main-area">
+    <header class="topbar"><button class="mobile-menu icon-button" id="mobile-menu" aria-label="Open navigation">☰</button><div class="breadcrumbs"><span>Workspace</span><span class="crumb-slash">/</span><strong id="breadcrumb-current">Overview</strong></div><div class="topbar-actions"><span class="status-indicator"><i></i> All systems operational</span><button class="icon-button notification-button" id="notifications-button" aria-label="Notifications">♧<i class="notification-dot"></i></button><span class="top-avatar">JM</span></div></header>
+    <section class="page-content" id="view-overview">
+      <div class="welcome-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> TUESDAY, OCTOBER 27, 2026</div><h1>Good morning, Jordan <span class="wave">✳</span></h1><p class="page-subtitle">Here’s what’s happening with your support team today.</p></div><button class="primary-button" id="create-ticket"><span>＋</span> Create ticket</button></div>
+      <div class="metric-grid">
+        <article class="metric-card"><div class="metric-top"><span>Open tickets</span><span class="metric-icon metric-blue">▤</span></div><div class="metric-value" id="metric-open">08</div><div class="metric-foot"><span class="trend up">↗ 12.5%</span><span>vs. last week</span></div><div class="mini-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        <article class="metric-card"><div class="metric-top"><span>In progress</span><span class="metric-icon metric-violet">◷</span></div><div class="metric-value" id="metric-progress">03</div><div class="metric-foot"><span class="trend neutral">→ 0%</span><span>vs. last week</span></div><div class="mini-bars bars-violet" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        <article class="metric-card"><div class="metric-top"><span>Resolved this week</span><span class="metric-icon metric-green">✓</span></div><div class="metric-value">24</div><div class="metric-foot"><span class="trend up">↗ 8.2%</span><span>vs. last week</span></div><div class="mini-bars bars-green" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        <article class="metric-card"><div class="metric-top"><span>Avg. first response</span><span class="metric-icon metric-orange">⌁</span></div><div class="metric-value">18<span class="metric-unit">m</span></div><div class="metric-foot"><span class="trend up">↘ 4.6%</span><span>faster this week</span></div><div class="mini-bars bars-orange" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
       </div>
-      <div class="nav-label">WORKSPACE</div>
-      <nav class="nav-list" aria-label="Main navigation">
-        <button class="nav-item active" data-view="overview"><span class="nav-icon">⌂</span> Overview</button>
-        <button class="nav-item" data-view="tickets"><span class="nav-icon">▤</span> All tickets <span class="nav-count" id="nav-open-count">12</span></button>
-        <button class="nav-item" data-view="my-tickets"><span class="nav-icon">♙</span> Assigned to me</button>
-        <button class="nav-item" data-view="activity"><span class="nav-icon">◷</span> Activity</button>
-      </nav>
-      <div class="nav-label nav-label-spaced">VIEWS <button class="tiny-plus" id="add-view" aria-label="Add view">+</button></div>
-      <nav class="nav-list" aria-label="Saved views">
-        <button class="nav-item" data-filter="Open"><span class="dot dot-blue"></span> Open <span class="nav-count">8</span></button>
-        <button class="nav-item" data-filter="In progress"><span class="dot dot-purple"></span> In progress <span class="nav-count">3</span></button>
-        <button class="nav-item" data-filter="Resolved"><span class="dot dot-green"></span> Resolved</button>
-      </nav>
-      <div class="sidebar-bottom">
-        <div class="help-card">
-          <div class="help-icon">✦</div>
-          <strong>Need a hand?</strong>
-          <p>Find your way around TicketHub.</p>
-          <button id="help-button">Visit help center <span>↗</span></button>
-        </div>
-        <button class="profile-button" id="profile-button">
-          <span class="avatar avatar-self">JM</span>
-          <span class="profile-copy"><strong>Jordan Miller</strong><small>Support admin</small></span>
-          <span class="profile-more">•••</span>
-        </button>
+      <div class="content-grid">
+        <section class="panel tickets-panel">
+          <div class="panel-header"><div><h2>Recent tickets</h2><p>A snapshot of your team's latest requests.</p></div><button class="text-button" data-go="tickets">View all tickets <span>→</span></button></div>
+          <div class="ticket-toolbar"><label class="search-field"><span>⌕</span><input id="ticket-search" type="search" placeholder="Search tickets..." aria-label="Search tickets"></label><button class="filter-button" id="filter-button">☷ <span>Filter</span><b id="filter-indicator"></b></button></div>
+          <div class="table-wrap"><table class="ticket-table"><thead><tr><th><input type="checkbox" id="select-all" aria-label="Select all tickets"></th><th>Ticket</th><th>Requester</th><th>Priority</th><th>Status</th><th>Assignee</th><th></th></tr></thead><tbody id="ticket-table-body"></tbody></table></div>
+          <div class="table-footer"><span id="table-count">Showing 5 tickets</span><div class="pagination"><button disabled aria-label="Previous page">←</button><button class="page-active" id="page-one">1</button><button id="page-two">2</button><button aria-label="Next page" id="next-page">→</button></div></div>
+        </section>
+        <aside class="right-column">
+          <section class="panel team-panel"><div class="panel-header compact"><div><h2>Team workload</h2><p>Tickets assigned today</p></div><button class="kebab" aria-label="More team options">•••</button></div><div class="workload-total"><strong>18</strong><span>active tickets</span><span class="workload-label">Across 4 agents</span></div><div class="stacked-progress"><span></span><span></span><span></span><span></span></div><div class="agent-list">
+            <div class="agent-row"><span class="avatar avatar-lavender">AL</span><span class="agent-name">Alex Lee<small>Product support</small></span><strong>6 <small>tickets</small></strong></div><div class="agent-row"><span class="avatar avatar-peach">SC</span><span class="agent-name">Sam Carter<small>Technical support</small></span><strong>5 <small>tickets</small></strong></div><div class="agent-row"><span class="avatar avatar-mint">RP</span><span class="agent-name">Riley Park<small>Billing support</small></span><strong>4 <small>tickets</small></strong></div><div class="agent-row"><span class="avatar avatar-blue">JM</span><span class="agent-name">Jordan Miller<small>General support</small></span><strong>3 <small>tickets</small></strong></div>
+          </div><button class="secondary-button full-button" id="team-button">View team overview <span>→</span></button></section>
+          <section class="panel activity-panel"><div class="panel-header compact"><div><h2>Latest activity</h2><p>What your team has been up to.</p></div><button class="kebab" aria-label="More activity options">•••</button></div><div class="activity-list" id="activity-list"></div><button class="text-button activity-view" data-go="activity">View all activity <span>→</span></button></section>
+        </aside>
       </div>
-    </aside>
-
-    <main class="main-area">
-      <header class="topbar">
-        <button class="mobile-menu icon-button" id="mobile-menu" aria-label="Open navigation">☰</button>
-        <div class="breadcrumbs"><span>Workspace</span><span class="crumb-slash">/</span><strong id="breadcrumb-current">Overview</strong></div>
-        <div class="topbar-actions">
-          <span class="status-indicator"><i></i> All systems operational</span>
-          <button class="icon-button notification-button" id="notifications-button" aria-label="Notifications">♧<i class="notification-dot"></i></button>
-          <span class="top-avatar">JM</span>
-        </div>
-      </header>
-
-      <section class="page-content" id="view-overview">
-        <div class="welcome-row">
-          <div>
-            <div class="eyebrow"><span class="eyebrow-line"></span> TUESDAY, OCTOBER 27, 2026</div>
-            <h1>Good morning, Jordan <span class="wave">✳</span></h1>
-            <p class="page-subtitle">Here’s what’s happening with your support team today.</p>
-          </div>
-          <button class="primary-button" id="create-ticket"><span>＋</span> Create ticket</button>
-        </div>
-
-        <div class="metric-grid">
-          <article class="metric-card">
-            <div class="metric-top"><span>Open tickets</span><span class="metric-icon metric-blue">▤</span></div>
-            <div class="metric-value" id="metric-open">08</div>
-            <div class="metric-foot"><span class="trend up">↗ 12.5%</span><span>vs. last week</span></div>
-            <div class="mini-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-          </article>
-          <article class="metric-card">
-            <div class="metric-top"><span>In progress</span><span class="metric-icon metric-violet">◷</span></div>
-            <div class="metric-value" id="metric-progress">03</div>
-            <div class="metric-foot"><span class="trend neutral">→ 0%</span><span>vs. last week</span></div>
-            <div class="mini-bars bars-violet" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-          </article>
-          <article class="metric-card">
-            <div class="metric-top"><span>Resolved this week</span><span class="metric-icon metric-green">✓</span></div>
-            <div class="metric-value">24</div>
-            <div class="metric-foot"><span class="trend up">↗ 8.2%</span><span>vs. last week</span></div>
-            <div class="mini-bars bars-green" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-          </article>
-          <article class="metric-card">
-            <div class="metric-top"><span>Avg. first response</span><span class="metric-icon metric-orange">⌁</span></div>
-            <div class="metric-value">18<span class="metric-unit">m</span></div>
-            <div class="metric-foot"><span class="trend up">↘ 4.6%</span><span>faster this week</span></div>
-            <div class="mini-bars bars-orange" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-          </article>
-        </div>
-
-        <div class="content-grid">
-          <section class="panel tickets-panel">
-            <div class="panel-header">
-              <div><h2>Recent tickets</h2><p>A snapshot of your team's latest requests.</p></div>
-              <button class="text-button" data-go="tickets">View all tickets <span>→</span></button>
-            </div>
-            <div class="ticket-toolbar">
-              <label class="search-field"><span>⌕</span><input id="ticket-search" type="search" placeholder="Search tickets..." aria-label="Search tickets"></label>
-              <button class="filter-button" id="filter-button">☷ <span>Filter</span><b id="filter-indicator"></b></button>
-            </div>
-            <div class="table-wrap">
-              <table class="ticket-table">
-                <thead><tr><th><input type="checkbox" id="select-all" aria-label="Select all tickets"></th><th>Ticket</th><th>Requester</th><th>Priority</th><th>Status</th><th>Assignee</th><th></th></tr></thead>
-                <tbody id="ticket-table-body"></tbody>
-              </table>
-            </div>
-            <div class="table-footer"><span id="table-count">Showing 5 of 12 tickets</span><div class="pagination"><button disabled aria-label="Previous page">←</button><button class="page-active">1</button><button id="page-two">2</button><button aria-label="Next page" id="next-page">→</button></div></div>
-          </section>
-          <aside class="right-column">
-            <section class="panel team-panel">
-              <div class="panel-header compact"><div><h2>Team workload</h2><p>Tickets assigned today</p></div><button class="kebab" aria-label="More team options">•••</button></div>
-              <div class="workload-total"><strong>18</strong><span>active tickets</span><span class="workload-label">Across 4 agents</span></div>
-              <div class="stacked-progress"><span></span><span></span><span></span><span></span></div>
-              <div class="agent-list">
-                <div class="agent-row"><span class="avatar avatar-lavender">AL</span><span class="agent-name">Alex Lee<small>Product support</small></span><strong>6 <small>tickets</small></strong></div>
-                <div class="agent-row"><span class="avatar avatar-peach">SC</span><span class="agent-name">Sam Carter<small>Technical support</small></span><strong>5 <small>tickets</small></strong></div>
-                <div class="agent-row"><span class="avatar avatar-mint">RP</span><span class="agent-name">Riley Park<small>Billing support</small></span><strong>4 <small>tickets</small></strong></div>
-                <div class="agent-row"><span class="avatar avatar-blue">JM</span><span class="agent-name">Jordan Miller<small>General support</small></span><strong>3 <small>tickets</small></strong></div>
-              </div>
-              <button class="secondary-button full-button" id="team-button">View team overview <span>→</span></button>
-            </section>
-            <section class="panel activity-panel">
-              <div class="panel-header compact"><div><h2>Latest activity</h2><p>What your team has been up to.</p></div><button class="kebab" aria-label="More activity options">•••</button></div>
-              <div class="activity-list" id="activity-list">
-                <div class="activity-item"><span class="activity-avatar avatar-mint">RP</span><div><p><strong>Riley Park</strong> resolved <a href="#" data-ticket-link="TK-1038">#TK-1038</a></p><small>2 minutes ago</small></div></div>
-                <div class="activity-item"><span class="activity-avatar avatar-peach">SC</span><div><p><strong>Sam Carter</strong> replied to <a href="#" data-ticket-link="TK-1041">#TK-1041</a></p><small>18 minutes ago</small></div></div>
-                <div class="activity-item"><span class="activity-avatar avatar-lavender">AL</span><div><p><strong>Alex Lee</strong> was assigned to <a href="#" data-ticket-link="TK-1043">#TK-1043</a></p><small>42 minutes ago</small></div></div>
-              </div>
-              <button class="text-button activity-view" data-go="activity">View all activity <span>→</span></button>
-            </section>
-          </aside>
-        </div>
-        <footer class="page-footer"><span>© 2026 TicketHub, Inc.</span><span>Made for better support <b>✳</b></span><span><a href="#">Privacy</a> · <a href="#">Status</a> · <a href="#">Help</a></span></footer>
-      </section>
-
-      <section class="page-content secondary-view hidden" id="view-tickets">
-        <div class="welcome-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> SUPPORT WORKSPACE</div><h1>All tickets</h1><p class="page-subtitle">Keep every request moving, from first reply to resolution.</p></div><button class="primary-button" id="create-ticket-list"><span>＋</span> Create ticket</button></div>
-        <div class="metric-grid compact-metrics"><article class="metric-card"><div class="metric-top"><span>Total tickets</span><span class="metric-icon metric-blue">▤</span></div><div class="metric-value" id="list-total">12</div><div class="metric-foot">Across all statuses</div></article><article class="metric-card"><div class="metric-top"><span>Open</span><span class="metric-icon metric-violet">◷</span></div><div class="metric-value" id="list-open">8</div><div class="metric-foot">Awaiting a response</div></article><article class="metric-card"><div class="metric-top"><span>High priority</span><span class="metric-icon metric-orange">↑</span></div><div class="metric-value" id="list-high">3</div><div class="metric-foot">Needs close attention</div></article></div>
-        <section class="panel all-tickets-panel"><div class="ticket-toolbar"><label class="search-field"><span>⌕</span><input id="all-search" type="search" placeholder="Search by ID, title or requester..." aria-label="Search all tickets"></label><select id="status-select" aria-label="Filter by status"><option value="">All statuses</option><option>Open</option><option>In progress</option><option>Resolved</option></select><select id="priority-select" aria-label="Filter by priority"><option value="">All priorities</option><option>Urgent</option><option>High</option><option>Medium</option><option>Low</option></select><button class="secondary-button" id="clear-filters">Reset filters</button></div><div class="table-wrap"><table class="ticket-table all-table"><thead><tr><th>ID</th><th>Subject</th><th>Requester</th><th>Category</th><th>Priority</th><th>Status</th><th>Assignee</th><th>Updated</th></tr></thead><tbody id="all-ticket-body"></tbody></table></div><div class="table-footer"><span id="all-table-count">12 tickets</span><span class="demo-note">Demo data · Changes stay in this browser session</span></div></section>
-        <footer class="page-footer"><span>© 2026 TicketHub, Inc.</span><span>Made for better support <b>✳</b></span><span><a href="#">Privacy</a> · <a href="#">Status</a> · <a href="#">Help</a></span></footer>
-      </section>
-
-      <section class="page-content secondary-view hidden" id="view-my-tickets">
-        <div class="welcome-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> PERSONAL QUEUE</div><h1>Assigned to me</h1><p class="page-subtitle">Your requests, prioritized so you can focus on what matters.</p></div><button class="primary-button" id="create-ticket-mine"><span>＋</span> Create ticket</button></div>
-        <section class="panel all-tickets-panel"><div class="panel-header"><div><h2>Your queue</h2><p>Tickets currently assigned to Jordan Miller.</p></div><span class="queue-pill" id="mine-count">3 tickets</span></div><div class="table-wrap"><table class="ticket-table all-table"><thead><tr><th>ID</th><th>Subject</th><th>Requester</th><th>Priority</th><th>Status</th><th>Updated</th></tr></thead><tbody id="mine-ticket-body"></tbody></table></div></section>
-      </section>
-
-      <section class="page-content secondary-view hidden" id="view-activity">
-        <div class="welcome-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> AUDIT TRAIL</div><h1>Activity</h1><p class="page-subtitle">A timeline of recent events across your support workspace.</p></div></div>
-        <section class="panel activity-page-panel"><div class="panel-header"><div><h2>Recent events</h2><p>Updates from your team in one place.</p></div><span class="queue-pill">Last 24 hours</span></div><div class="activity-feed" id="activity-feed"></div></section>
-      </section>
-    </main>
-  </div>
-
-  <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
-
-  <dialog class="modal" id="ticket-modal">
-    <form id="ticket-form" method="dialog">
-      <div class="modal-header"><div><span class="modal-kicker">NEW REQUEST</span><h2>Create a ticket</h2><p>Capture the issue and get it to the right person.</p></div><button type="button" class="modal-close" id="close-modal" aria-label="Close">×</button></div>
-      <div class="form-grid"><label class="form-field form-wide">Subject <span>*</span><input name="subject" required maxlength="120" placeholder="e.g. Unable to access my account"></label><label class="form-field">Requester <span>*</span><input name="requester" required placeholder="Full name"></label><label class="form-field">Requester email<input name="email" type="email" placeholder="name@company.com"></label><label class="form-field">Category<select name="category"><option>Technical support</option><option>Account access</option><option>Billing</option><option>Product feedback</option><option>General inquiry</option></select></label><label class="form-field">Priority<select name="priority"><option>Medium</option><option>Low</option><option>High</option><option>Urgent</option></select></label><label class="form-field form-wide">Description <span>*</span><textarea name="description" required rows="4" placeholder="Describe the issue, expected behavior and what you have already tried..."></textarea></label></div>
-      <div class="modal-footer"><span class="required-note"><span>*</span> Required fields</span><div><button type="button" class="secondary-button" id="cancel-modal">Cancel</button><button type="submit" class="primary-button">Create ticket <span>→</span></button></div></div>
-    </form>
-  </dialog>
-
-  <dialog class="modal detail-modal" id="detail-modal"><div id="detail-content"></div></dialog>
-  <script src="app.js"></script>
-</body>
-</html>
+      <footer class="page-footer"><span>© 2026 TicketHub, Inc.</span><span>Made for better support <b>✳</b></span><span><a href="#">Privacy</a> · <a href="#">Status</a> · <a href="#">Help</a></span></footer>
+    </section>
+    <section class="page-content secondary-view hidden" id="view-tickets">
+      <div class="welcome-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> SUPPORT WORKSPACE</div><h1>All tickets</h1><p class="page-subtitle">Keep every request moving, from first reply to resolution.</p></div><button class="primary-button" id="create-ticket-list"><span>＋</span> Create ticket</button></div>
+      <div class="metric-grid compact-metrics"><article class="metric-card"><div class="metric-top"><span>Total tickets</span><span class="metric-icon metric-blue">▤</span></div><div class="metric-value" id="list-total">12</div><div class="metric-foot">Across all statuses</div></article><article class="metric-card"><div class="metric-top"><span>Open</span><span class="metric-icon metric-violet">◷</span></div><div class="metric-value" id="list-open">8</div><div class="metric-foot">Awaiting a response</div></article><article class="metric-card"><div class="metric-top"><span>High priority</span><span class="metric-icon metric-orange">↑</span></div><div class="metric-value" id="list-high">3</div><div class="metric-foot">Needs close attention</div></article></div>
+      <section class="panel all-tickets-panel"><div class="ticket-toolbar"><label class="search-field"><span>⌕</span><input id="all-search" type="search" placeholder="Search by ID, title or requester..." aria-label="Search all tickets"></label><select id="status-select" aria-label="Filter by status"><option value="">All statuses</option><option>Open</option><option>In progress</option><option>Resolved</option></select><select id="priority-select" aria-label="Filter by priority"><option value="">All priorities</option><option>Urgent</option><option>High</option><option>Medium</option><option>Low</option></select><button class="secondary-button" id="clear-filters">Reset filters</button></div><div class="table-wrap"><table class="ticket-table all-table"><thead><tr><th>ID</th><th>Subject</th><th>Requester</th><th>Category</th><th>Priority</th><th>Status</th><th>Assignee</th><th>Updated</th></tr></thead><tbody id="all-ticket-body"></tbody></table></div><div class="table-footer"><span id="all-table-count">12 tickets</span><span class="demo-note">Demo data · Changes stay in this browser session</span></div></section>
+      <footer class="page-footer"><span>© 2026 TicketHub, Inc.</span><span>Made for better support <b>✳</b></span><span><a href="#">Privacy</a> · <a href="#">Status</a> · <a href="#">Help</a></span></footer>
+    </section>
+    <section class="page-content secondary-view hidden" id="view-my-tickets"><div class="welcome-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> PERSONAL QUEUE</div><h1>Assigned to me</h1><p class="page-subtitle">Your requests, prioritized so you can focus on what matters.</p></div><button class="primary-button" id="create-ticket-mine"><span>＋</span> Create ticket</button></div><section class="panel all-tickets-panel"><div class="panel-header"><div><h2>Your queue</h2><p>Tickets currently assigned to Jordan Miller.</p></div><span class="queue-pill" id="mine-count">3 tickets</span></div><div class="table-wrap"><table class="ticket-table all-table"><thead><tr><th>ID</th><th>Subject</th><th>Requester</th><th>Priority</th><th>Status</th><th>Updated</th></tr></thead><tbody id="mine-ticket-body"></tbody></table></div></section></section>
+    <section class="page-content secondary-view hidden" id="view-activity"><div class="welcome-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> AUDIT TRAIL</div><h1>Activity</h1><p class="page-subtitle">A timeline of recent events across your support workspace.</p></div></div><section class="panel activity-page-panel"><div class="panel-header"><div><h2>Recent events</h2><p>Updates from your team in one place.</p></div><span class="queue-pill">Last 24 hours</span></div><div class="activity-feed" id="activity-feed"></div></section></section>
+  </main>
+</div>
+<div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+<dialog class="modal" id="ticket-modal"><form id="ticket-form"><div class="modal-header"><div><span class="modal-kicker">NEW REQUEST</span><h2>Create a ticket</h2><p>Capture the issue and get it to the right person.</p></div><button type="button" class="modal-close" id="close-modal" aria-label="Close">×</button></div><div class="form-grid"><label class="form-field form-wide">Subject <span>*</span><input name="subject" required maxlength="120" placeholder="e.g. Unable to access my account"></label><label class="form-field">Requester <span>*</span><input name="requester" required placeholder="Full name"></label><label class="form-field">Requester email<input name="email" type="email" placeholder="name@company.com"></label><label class="form-field">Category<select name="category"><option>Technical support</option><option>Account access</option><option>Billing</option><option>Product feedback</option><option>General inquiry</option></select></label><label class="form-field">Priority<select name="priority"><option>Medium</option><option>Low</option><option>High</option><option>Urgent</option></select></label><label class="form-field form-wide">Description <span>*</span><textarea name="description" required rows="4" placeholder="Describe the issue, expected behavior and what you have already tried..."></textarea></label></div><div class="modal-footer"><span class="required-note"><span>*</span> Required fields</span><div><button type="button" class="secondary-button" id="cancel-modal">Cancel</button><button type="submit" class="primary-button">Create ticket <span>→</span></button></div></div></form></dialog>
+<dialog class="modal detail-modal" id="detail-modal"><div id="detail-content"></div></dialog>
+<script src="app.js"></script>
+</body></html>
